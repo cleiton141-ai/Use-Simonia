@@ -1029,13 +1029,40 @@ button {
     padding-top: var(--spacing-lg);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    gap: var(--spacing-sm, 12px);
 }
 
 .footer__copy {
     color: rgba(255, 255, 255, 0.7);
     font-size: var(--small-size);
+}
+
+/* Crédito do desenvolvedor */
+.credito-dev {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: var(--small-size);
+}
+
+.credito-dev strong {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.credito-dev a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.credito-dev a:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
 }
 
 .footer__bottom-links {

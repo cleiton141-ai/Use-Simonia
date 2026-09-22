@@ -140,6 +140,15 @@ animatedElements.forEach(el => observer.observe(el));
 // ==================== GALLERY MODAL ====================
 const galleryItems = document.querySelectorAll('.galeria__item');
 
+galleryItems.forEach((item, index) => {
+    const gorro = document.createElement('img');
+    gorro.src = './assets/natal-gorro.png';
+    gorro.alt = '';
+    gorro.className = 'natal-gorro';
+    gorro.setAttribute('aria-hidden', 'true');
+    item.appendChild(gorro);
+});
+
 galleryItems.forEach(item => {
     item.addEventListener('click', () => {
         const img = item.querySelector('.galeria__img');

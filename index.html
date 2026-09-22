@@ -143,6 +143,14 @@
 </head>
 
 <body>
+    <!-- Decoração de Natal - uma moldura em cada quina da página -->
+    <div class="natal-moldura" aria-hidden="true">
+        <img src="./assets/moldura1.png" alt="" class="natal-moldura__item natal-moldura__item--1">
+        <img src="./assets/moldura2.png" alt="" class="natal-moldura__item natal-moldura__item--2">
+        <img src="./assets/moldura3.png" alt="" class="natal-moldura__item natal-moldura__item--3">
+        <img src="./assets/moldura4.png" alt="" class="natal-moldura__item natal-moldura__item--4">
+    </div>
+
     <!-- Header -->
     <header class="header" id="header">
         <nav class="nav container">
@@ -236,7 +244,22 @@
                 </div>
                 <div class="hero__image" data-aos="fade-left" data-aos-delay="200">
                     <div class="hero__image-wrapper">
-                        <img src="./assets/blusa1.png" alt="Use Simonia Galeria" class="hero__img">
+                        <img src="./assets/natal-gorro.png" alt="" class="natal-gorro">
+                        <div class="hero-slideshow" id="hero-slideshow">
+                            <div class="hero-slideshow__slide hero-slideshow__slide--active">
+                                <img src="./assets/blusa1.png" alt="Use Simonia - Coleção de blusas">
+                            </div>
+                            <div class="hero-slideshow__slide">
+                                <img src="./assets/vestido  (29).png" alt="Use Simonia - Coleção de vestidos">
+                            </div>
+                            <div class="hero-slideshow__slide">
+                                <img src="./assets/calça (8).png" alt="Use Simonia - Coleção de calças">
+                            </div>
+                            <div class="hero-slideshow__slide">
+                                <img src="./assets/blusa (16).png" alt="Use Simonia - Coleção">
+                            </div>
+                            <div class="hero-slideshow__dots" id="hero-slideshow-dots"></div>
+                        </div>
                         <div class="hero__image-decoration"></div>
                     </div>
                 </div>
@@ -248,6 +271,7 @@
             <div class="container">
                 <div class="sobre__container">
                     <div class="sobre__image" data-aos="fade-right">
+                        <img src="./assets/natal-gorro.png" alt="" class="natal-gorro">
                         <div class="topo-slideshow" id="topo-slideshow">
                             <div class="topo-slideshow__slide topo-slideshow__slide--active">
                                 <img src="./assets/blusa (16).png" alt="Use Simonia - Coleção">
@@ -319,6 +343,7 @@
                     <a href="vestido.html" class="categoria__card" data-aos="fade-up" data-aos-delay="100"
                         style="text-decoration:none;color:inherit;">
                         <div class="categoria__image">
+                            <img src="./assets/natal-gorro.png" alt="" class="natal-gorro natal-gorro--sm">
                             <img src="./assets/vestido  (29).png" alt="Vestidos" class="categoria__img">
                             <div class="categoria__overlay"></div>
                         </div>
@@ -331,6 +356,7 @@
                     <a href="blusa.html" class="categoria__card" data-aos="fade-up" data-aos-delay="200"
                         style="text-decoration:none;color:inherit;">
                         <div class="categoria__image">
+                            <img src="./assets/natal-gorro.png" alt="" class="natal-gorro natal-gorro--sm">
                             <img src="./assets/blusa (14).png" alt="Blusas" class="categoria__img">
                             <div class="categoria__overlay"></div>
                         </div>
@@ -343,6 +369,7 @@
                     <a href="calca.html" class="categoria__card" data-aos="fade-up" data-aos-delay="300"
                         style="text-decoration:none;color:inherit;">
                         <div class="categoria__image">
+                            <img src="./assets/natal-gorro.png" alt="" class="natal-gorro natal-gorro--sm">
                             <img src="./assets/calça (8).png" alt="Calças" class="categoria__img">
                             <div class="categoria__overlay"></div>
                         </div>
@@ -721,6 +748,37 @@
 
     <script src="script.js"></script>
     <script>
+        // Slideshow automático do hero
+        (function () {
+            const container = document.getElementById('hero-slideshow');
+            const dotsContainer = document.getElementById('hero-slideshow-dots');
+            if (!container || !dotsContainer) return;
+
+            const slides = container.querySelectorAll('.hero-slideshow__slide');
+            let current = 0;
+
+            slides.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.classList.add('hero-slideshow__dot');
+                if (i === 0) dot.classList.add('hero-slideshow__dot--active');
+                dot.addEventListener('click', () => irParaSlide(i));
+                dotsContainer.appendChild(dot);
+            });
+            const dots = dotsContainer.querySelectorAll('.hero-slideshow__dot');
+
+            function irParaSlide(index) {
+                slides[current].classList.remove('hero-slideshow__slide--active');
+                dots[current].classList.remove('hero-slideshow__dot--active');
+                current = index;
+                slides[current].classList.add('hero-slideshow__slide--active');
+                dots[current].classList.add('hero-slideshow__dot--active');
+            }
+
+            setInterval(() => {
+                irParaSlide((current + 1) % slides.length);
+            }, 4000);
+        })();
+
         // Slideshow automático do topo
         (function () {
             const container = document.getElementById('topo-slideshow');

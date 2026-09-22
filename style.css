@@ -368,6 +368,53 @@ button {
     box-shadow: var(--shadow-lg);
 }
 
+.hero-slideshow {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+}
+
+.hero-slideshow__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.hero-slideshow__slide--active {
+    opacity: 1;
+}
+
+.hero-slideshow__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-slideshow__dots {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    display: flex;
+    gap: 8px;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.hero-slideshow__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.55);
+    cursor: pointer;
+}
+
+.hero-slideshow__dot--active {
+    background: var(--accent-color);
+}
+
 .hero__img {
     width: 100%;
     height: 500px;
@@ -1303,5 +1350,90 @@ button {
         right: 20px;
         width: 45px;
         height: 45px;
+    }
+}
+/* ==================== DECORAÇÃO DE NATAL ==================== */
+
+/* Molduras de flores natalinas fixas nas quatro quinas da página */
+.natal-moldura {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 90;
+}
+
+.natal-moldura__item {
+    position: absolute;
+    width: 180px;
+    height: auto;
+}
+
+.natal-moldura__item--1 {
+    top: 0;
+    left: 0;
+}
+
+.natal-moldura__item--2 {
+    top: 0;
+    right: 0;
+}
+
+.natal-moldura__item--3 {
+    right: 0;
+    bottom: 0;
+    transform: scaleX(-1);
+}
+
+.natal-moldura__item--4 {
+    bottom: 0;
+    left: 0;
+    transform: scaleX(-1);
+}
+
+/* Toquinha de Natal na quina das molduras de fotos.
+   Posicionada com valores positivos (não negativos) porque várias molduras
+   (.hero__image-wrapper, .categoria__card, .categoria__image) usam
+   overflow:hidden — offsets negativos seriam cortados pela moldura. */
+.natal-gorro {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 74px;
+    height: auto;
+    z-index: 5;
+    transform: rotate(18deg);
+    pointer-events: none;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+.natal-gorro--sm {
+    width: 50px;
+    top: 6px;
+    right: 6px;
+}
+
+.galeria__item .natal-gorro {
+    width: 64px;
+}
+
+@media (max-width: 768px) {
+    .natal-moldura__item {
+        width: 115px;
+    }
+
+    .natal-gorro {
+        width: 52px;
+        top: 6px;
+        right: 6px;
+    }
+
+    .natal-gorro--sm {
+        width: 40px;
+        top: 5px;
+        right: 5px;
+    }
+
+    .galeria__item .natal-gorro {
+        width: 48px;
     }
 }

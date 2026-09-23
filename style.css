@@ -1364,7 +1364,7 @@ button {
 
 .natal-moldura__item {
     position: absolute;
-    width: 180px;
+    width: clamp(78px, 15vw, 180px);
     height: auto;
 }
 
@@ -1398,7 +1398,7 @@ button {
     position: absolute;
     top: 8px;
     right: 8px;
-    width: 74px;
+    width: min(74px, 28%);
     height: auto;
     z-index: 5;
     transform: rotate(18deg);
@@ -1407,33 +1407,55 @@ button {
 }
 
 .natal-gorro--sm {
-    width: 50px;
+    width: min(50px, 24%);
     top: 6px;
     right: 6px;
 }
 
 .galeria__item .natal-gorro {
-    width: 64px;
+    width: min(64px, 26%);
 }
 
 @media (max-width: 768px) {
     .natal-moldura__item {
-        width: 115px;
+        width: clamp(64px, 20vw, 115px);
     }
 
     .natal-gorro {
-        width: 52px;
+        width: min(52px, 26%);
         top: 6px;
         right: 6px;
     }
 
     .natal-gorro--sm {
-        width: 40px;
+        width: min(40px, 22%);
         top: 5px;
         right: 5px;
     }
 
     .galeria__item .natal-gorro {
-        width: 48px;
+        width: min(48px, 24%);
+    }
+}
+
+@media (max-width: 480px) {
+    .natal-moldura__item {
+        width: clamp(54px, 19vw, 78px);
+    }
+
+    .natal-gorro {
+        top: 4px;
+        right: 4px;
+        width: min(44px, 24%);
+    }
+
+    .natal-gorro--sm {
+        top: 4px;
+        right: 4px;
+        width: min(34px, 20%);
+    }
+
+    .galeria__item .natal-gorro {
+        width: min(40px, 22%);
     }
 }
